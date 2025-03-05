@@ -1,0 +1,72 @@
+/* Stats Section */
+.stats-section {
+  padding: 20px;
+  /* height: calc(40vh - 100px); */
+  display: flex;
+  background-color: #212121;
+  position: relative;
+
+  border-radius: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid rgba(251, 192, 45, 0.2);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.stat-icon {
+  margin-bottom: 10px;
+  color: "green";
+  filter: drop-shadow(0 0 5px rgba(251, 192, 45, 0.5));
+}
+
+.stat-card h3 {
+  font-size: 1.8em;
+  margin: 0;
+  color: #c38154;
+  font-weight: bold;
+}
+
+.stat-card p {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-section {
+    display: none;
+  }
+}
+@media (max-width: 950px) {
+  .stats-section {
+    display: none;
+  }
+}

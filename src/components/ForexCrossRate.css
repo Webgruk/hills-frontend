@@ -1,0 +1,41 @@
+/* ForexCrossRatesWidget.css */
+.tradingview-widget-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 60vh;
+
+  padding: 30px 20px;
+  background: rgba(36, 36, 36, 0.95);
+
+  overflow: hidden;
+}
+.widget-title {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tradingview-widget-container__widget {
+  /* width: 80vw; */
+  height: 70%;
+}
+
+.tradingview-widget-copyright {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.blue-text {
+  color: #2962ff;
+  text-decoration: none;
+}
+
+.blue-text:hover {
+  text-decoration: underline;
+}
