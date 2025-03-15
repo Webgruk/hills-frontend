@@ -1,5 +1,5 @@
-// // TradingViewWidget.jsx
 // import React, { useEffect, useRef, memo } from "react";
+// import "./TradingViewWidget.css";
 
 // function TradingViewWidget() {
 //   const container = useRef();
@@ -28,37 +28,17 @@
 //   }, []);
 
 //   return (
-//     <div
-//       style={{
-//         display: "flex",
-//         justifyContent: "center",
-//         alignItems: "end",
-//         background: "rgba(36, 36, 36, 0.95)",
-//         position: "relative",
-//         height: "80vh",
-//         overflow: "hidden",
-//         width: "100%",
-//       }}
-//     >
-//       <div>
-//         <h3>item</h3>
-//       </div>
-//       <div
-//         className="tradingview-widget-container"
-//         ref={container}
-//         style={{ height: "100%", width: "100%" }}
-//       >
-//         <div
-//           className="tradingview-widget-container__widget"
-//           style={{ height: "calc(100% - 32px)", width: "100%" }}
-//         ></div>
+//     <div className="trading-view-wrap1">
+//       <h2 className="chart-title">Personal Trading Chart</h2>
+//       <div className="tradingview-widget-container" ref={container}>
+//         <div className="tradingview-widget-container__widget"></div>
 //         <div className="tradingview-widget-copyright">
 //           <a
 //             href="https://www.tradingview.com/"
 //             rel="noopener noreferrer"
-//             target="_blank"
+//             // target="_blank"
 //           >
-//             <span className="blue-text">Track all markets on TradingView</span>
+//             <div className="blue-text"></div>
 //           </a>
 //         </div>
 //       </div>
@@ -68,14 +48,13 @@
 
 // export default memo(TradingViewWidget);
 
-// TradingViewWidget.jsx
-
-// TradingViewWidget.jsx
-import React, { useEffect, useRef, memo } from "react";
+import React, { useEffect, useRef, useState, memo } from "react";
+import { Skeleton } from "@mui/material";
 import "./TradingViewWidget.css";
 
 function TradingViewWidget() {
   const container = useRef();
+  const [isLoading, setIsLoading] = useState(true); // Track loading state
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -97,23 +76,54 @@ function TradingViewWidget() {
           "calendar": false,
           "support_host": "https://www.tradingview.com"
         }`;
+
+    // Handle script load
+    script.onload = () => {
+      setIsLoading(false); // Set loading to false when script loads
+    };
+    script.onerror = () => {
+      console.error("Error loading TradingView script");
+      setIsLoading(false); // Optionally handle error case
+    };
+
     container.current.appendChild(script);
+
+    // Cleanup to avoid memory leaks
+    return () => {
+      if (container.current && script.parentNode === container.current) {
+        container.current.removeChild(script);
+      }
+    };
   }, []);
 
   return (
-    <div className="trading-view-wrapper">
+    <div className="trading-view-wrap1">
       <h2 className="chart-title">Personal Trading Chart</h2>
       <div className="tradingview-widget-container" ref={container}>
-        <div className="tradingview-widget-container__widget"></div>
-        <div className="tradingview-widget-copyright">
-          <a
-            href="https://www.tradingview.com/"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <span className="blue-text">Track all markets on TradingView</span>
-          </a>
-        </div>
+        {isLoading ? (
+          // Skeleton while loading
+          <Skeleton
+            variant="rectangular"
+            width="100%"
+            height={500} // Adjust height to match chart size
+            animation="wave"
+            sx={{ bgcolor: "#444" }} // Match dark theme
+          />
+        ) : (
+          // Chart content when loaded
+          <>
+            <div className="tradingview-widget-container__widget"></div>
+            <div className="tradingview-widget-copyright">
+              <a
+                href="https://www.tradingview.com/"
+                rel="noopener noreferrer"
+                // target="_blank"
+              >
+                <div className="blue-text"></div>
+              </a>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

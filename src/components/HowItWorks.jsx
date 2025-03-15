@@ -123,7 +123,6 @@ const HowItWorks = () => {
                 <Card
                   sx={{
                     background: "rgba(255, 255, 255, 0.04)",
-                    backdropFilter: "blur(12px)",
                     borderRadius: "20px",
                     border: `1px solid ${step.color}20`,
                     boxShadow: "0 6px 20px rgba(0, 0, 0, 0.25)",

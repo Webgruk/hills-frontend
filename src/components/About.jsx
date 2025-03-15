@@ -120,7 +120,7 @@ const About = () => {
               </Card>
             </motion.div>
           </Grid>
-          <Grid item xs={12} md={6}>
+          {/* <Grid item xs={12} md={6}>
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -129,10 +129,11 @@ const About = () => {
             >
               <Box
                 component="img"
-                src="https://via.placeholder.com/400x300?text=Crypto+Vision"
+                src="/grow.jpg"
                 alt="Crypto Vision"
                 sx={{
                   width: "100%",
+                  height: "50vh",
                   borderRadius: "20px",
                   boxShadow: "0 10px 40px rgba(255, 202, 40, 0.2)",
                   border: "2px solid #ffca28",
@@ -141,7 +142,7 @@ const About = () => {
                 }}
               />
             </motion.div>
-          </Grid>
+          </Grid> */}
         </Grid>
 
         {/* Team Section */}
@@ -162,17 +163,17 @@ const About = () => {
             {
               name: "John Doe",
               role: "Founder & CEO",
-              img: "https://via.placeholder.com/150",
+              img: "/mr1.jpg",
             },
             {
               name: "Jane Smith",
               role: "Chief Analyst",
-              img: "https://via.placeholder.com/150",
+              img: "/mr2.jpg",
             },
             {
               name: "Alex Carter",
               role: "Blockchain Expert",
-              img: "https://via.placeholder.com/150",
+              img: "/mr3.jpg",
             },
           ].map((member, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
@@ -182,7 +183,7 @@ const About = () => {
                     background: "rgba(255, 255, 255, 0.08)",
                     borderRadius: "15px",
                     textAlign: "center",
-                    py: 3,
+                    p: 3,
                     border: "1px solid rgba(255, 202, 40, 0.2)",
                     transition: "all 0.3s ease",
                     "&:hover": {
